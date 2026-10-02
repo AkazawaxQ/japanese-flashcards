@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07060b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Japanese Kanji Flashcards">
+<title>Japanese Kanji Flashcards</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand">
+    <p class="eyebrow">日本語 · KANJI FLASHCARDS</p>
+    <p class="creator">made by Akazawa</p>
+    <h1>Japanese Kanji Flashcards</h1>
+  </div>
+  <div class="header-actions">
+    <nav class="tabs">
+      <button class="tab is-active" data-tab="practice">Practice</button>
+      <button class="tab" data-tab="dictionary">Dictionary</button>
+      <button class="tab" data-tab="saved">Saved (0)</button>
+    </nav>
+    <label class="language-picker"><span>Meaning</span>
+      <select id="language-select"><option value="en">EN</option><option value="jp">日本語</option><option value="tr">TR</option></select>
+    </label>
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="theme-tools">
+      <button class="theme-color-btn" id="theme-color-btn" type="button">🎨 Color</button>
+      <div class="theme-panel" id="theme-panel" hidden>
+        <div class="theme-panel-title">Accent color</div>
+        <div class="color-presets" id="color-presets">
+          <button type="button" class="color-swatch" data-color="#b56bff" style="--swatch:#b56bff" aria-label="Purple"></button>
+          <button type="button" class="color-swatch" data-color="#3b82f6" style="--swatch:#3b82f6" aria-label="Blue"></button>
+          <button type="button" class="color-swatch" data-color="#10b981" style="--swatch:#10b981" aria-label="Green"></button>
+          <button type="button" class="color-swatch" data-color="#f43f5e" style="--swatch:#f43f5e" aria-label="Rose"></button>
+          <button type="button" class="color-swatch" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="Amber"></button>
+        </div>
+        <label class="custom-color"><span>Custom</span><input id="custom-color" type="color" value="#b56bff"></label>
+        <p class="theme-panel-note">Color is saved separately for Light and Dark.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="practice-view">
+  <div class="toolbar">
+    <div class="filters">
+      <button class="chip is-active" data-level="All">All</button>
+      <button class="chip" data-level="Learned">Learned</button>
+      <button class="chip" data-level="N5">N5</button>
+      <button class="chip" data-level="N4">N4</button>
+      <button class="chip" data-level="N3">N3</button>
+      <button class="chip" data-level="N2">N2</button>
+      <button class="chip" data-level="N1">N1</button>
+    </div>
+    <p class="progress" id="progress"></p>
+  </div>
+
+  <article class="card">
+    <button class="card-face" id="practice-face">
+      <span class="card-hint" id="practice-hint">Tap to reveal</span>
+      <span class="hanzi" id="practice-hanzi"></span>
+      <span class="pinyin always-pinyin" id="practice-reading"></span>
+      <div class="reveal" id="practice-reveal"><p class="meaning" id="practice-meaning"></p></div>
+      <span class="level-chip" id="practice-level"></span>
+    </button>
+    <div class="card-actions">
+      <button class="ghost" id="speak-btn">🔊 Hear</button>
+      <button class="ghost" id="shuffle-btn" aria-pressed="false">🔀 Karışık</button>
+      <button class="save" id="save-btn">Save</button>
+    </div>
+  </article>
+
+  <div class="nav-row"><button class="nav-btn" id="prev-btn">← Previous</button><button class="nav-btn primary" id="next-btn">Next →</button></div>
+  <p class="footnote">JLPT N5–N1 · Kanji levels are community approximations, not an official JLPT character list. Swipe left/right on iPhone.</p>
+</section>
+
+<section id="dictionary-view" hidden>
+  <div class="toolbar"><input class="search" id="dictionary-search" placeholder="Search 漢字, reading, English, 日本語, Türkçe"></div>
+  <div class="dictionary-list" id="dictionary-list"></div>
+</section>
+
+<section id="saved-view" hidden>
+  <div class="toolbar"><input class="search" id="search" placeholder="Search saved cards"></div>
+  <div class="empty" id="empty-state" hidden><p id="empty-title">No saved cards yet.</p><p id="empty-copy">Practice a kanji and tap Save to build your study list.</p><button class="nav-btn primary" id="go-practice">Go to Practice</button></div>
+  <div class="grid" id="saved-grid"></div>
+</section>
+</div>
+
+<nav class="bottom-nav"><button class="tab is-active" data-tab="practice">Practice</button><button class="tab" data-tab="dictionary">Dictionary</button><button class="tab" data-tab="saved">Saved (0)</button></nav>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

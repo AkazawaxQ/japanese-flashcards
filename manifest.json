@@ -1,0 +1,9 @@
+{
+  "name": "Japanese Kanji Flashcards",
+  "short_name": "Kanji Flashcards",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07060b",
+  "theme_color": "#07060b",
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml"}]
+}
